@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "448961208485",
+    "project_id": "cursuscare",
+    "storage_bucket": "cursuscare.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448961208485:android:1cd4a974f288d990a92d4c",
+        "android_client_info": {
+          "package_name": "com.cursus.cursus_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448961208485-tqnp70dook7h2r6fpqsa3j5p20ldaigm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdro_AASNrRv5EzbUYPQTnPYc-RWIapfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448961208485-tqnp70dook7h2r6fpqsa3j5p20ldaigm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "448961208485-5p8s0k0gkb7mbv2cl0hu0ueo9ul92v0b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cursus.cursusApp",
+                "app_store_id": "1584414044"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>448961208485-5p8s0k0gkb7mbv2cl0hu0ueo9ul92v0b.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.448961208485-5p8s0k0gkb7mbv2cl0hu0ueo9ul92v0b</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>448961208485-gtf3ku3vcqvanln4v1ih76i65tfgofr9.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCvBtvDRNukEixwLiVQt7hRSIUfroA4LqA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>448961208485</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.cursus.cursusApp</string>
+	<key>PROJECT_ID</key>
+	<string>cursuscare</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cursuscare.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:448961208485:ios:071b660accb203a0a92d4c</string>
+</dict>
+</plist>

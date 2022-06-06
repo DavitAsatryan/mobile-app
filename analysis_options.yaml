@@ -1,0 +1,30 @@
+analyzer:
+  enable-experiment:
+    - non-nullable
+  #  strong-mode:
+  #    implicit-casts: false
+  #    implicit-dynamic: false
+  #  errors:
+  #    # treat missing required parameters as a warning (not a hint)
+  #    missing_required_param: error
+  #    # treat missing returns as a warning (not a hint)
+  #    missing_return: error
+  # allow having TODOs in the code
+  #    todo: ignore
+  exclude:
+    - "bin/cache/**"
+    # the following two are relative to the stocks example and the flutter package respectively
+    # see https://github.com/dart-lang/sdk/issues/28463
+    - "lib/**/*.g.dart"
+    - "lib/**/*.freezed.dart"
+    - "lib/generated/**/*.dart"
+    - "lib/router.gr.dart"
+    # - "lib/providers/get_it.dart"
+  
+
+
+  errors: 
+    use_key_in_widget_constructors: ignore
+    omit_local_variable_types: ignore
+    avoid_catches_without_on_clauses: ignore
+  

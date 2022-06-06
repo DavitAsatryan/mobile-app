@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "706328138401",
+    "project_id": "cursuscare-14a1e",
+    "storage_bucket": "cursuscare-14a1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706328138401:android:54414e1592f20af67856e0",
+        "android_client_info": {
+          "package_name": "com.cursus.cursus_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706328138401-8dl9al03jv1nht58g0k6elmj1cebgnpd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJrDTSy2dmsM1OnxUHsZqaGNxwyQT3XY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706328138401-8dl9al03jv1nht58g0k6elmj1cebgnpd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,8 @@
+import 'package:cursus_app/ui/widgets/buttons/main_button.dart';
+import 'package:cursus_app/ui/widgets/signup_section.dart';
 import 'package:cursus_app/values/values.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 class TextInput extends StatefulWidget {
@@ -19,6 +20,7 @@ class TextInput extends StatefulWidget {
   final int? maxLines;
   final Color? textColor;
   final Color? hintColor;
+  final bool? number;
 
   const TextInput({
     required this.hintText,
@@ -33,7 +35,10 @@ class TextInput extends StatefulWidget {
     this.inputFormatters,
     this.padding,
     this.minLines,
-    this.maxLines, this.textColor, this.hintColor,
+    this.maxLines,
+    this.textColor,
+    this.hintColor,
+    this.number,
   }) : super(key: key);
 
   @override
@@ -53,11 +58,18 @@ class _TextInputState extends State<TextInput> {
   Widget build(BuildContext context) {
     return Padding(
       padding: widget.padding ?? EdgeInsets.symmetric(horizontal: 40),
-      child: TextField(
+      child: TextFormField(
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'error.Required_field'.tr();
+          }
+
+          return null;
+        },
         style: TextStyle(
           color: widget.textColor ?? AppColors.darkBlackColor,
         ),
-       // scrollPadding: EdgeInsets.symmetric(vertical: 2),
+        // scrollPadding: EdgeInsets.symmetric(vertical: 2),
         obscureText: isObscure,
         focusNode: widget.focusNode,
         onChanged: widget.onChanged,
@@ -67,6 +79,24 @@ class _TextInputState extends State<TextInput> {
         minLines: widget.minLines,
         maxLines: widget.maxLines ?? 1,
         decoration: InputDecoration(
+          prefixIcon: widget.number == true
+              ? SizedBox(
+                  child: Center(
+                    widthFactor: 0.0,
+                    heightFactor: 0.0,
+                    child: Text(
+                      "+374",
+                      style: TextStyle(
+                        color: widget.hintColor ??
+                            AppColors.textColor.withOpacity(.85),
+                        fontSize: 14,
+                        //  fontWeight: FontWeight.w600,
+                        height: 2,
+                      ),
+                    ),
+                  ),
+                )
+              : null,
           disabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
               // width: 1.5,
@@ -123,7 +153,6 @@ class _TextInputState extends State<TextInput> {
                   onPressed: () {
                     setState(() {
                       isObscure = !isObscure;
-
                     });
                   },
                   iconSize: 16,

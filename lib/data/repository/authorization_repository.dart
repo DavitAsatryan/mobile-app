@@ -53,6 +53,7 @@ class AuthenticationRepo {
     String lastName,
     String phoneNumber,
     String password,
+    String gender,
   ) async {
     try {
       final data = {
@@ -60,7 +61,8 @@ class AuthenticationRepo {
         'lastName': lastName,
         'phone': phoneNumber,
         'password': password,
-        'verifyBy': 'sms'
+        'verifyBy': 'sms',
+        'gender': gender,
       };
       final result = await dio.post('/public/auth/register', data: data);
       return result.data['userVerifyToken'];

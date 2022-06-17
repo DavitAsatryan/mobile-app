@@ -13,14 +13,14 @@ import 'package:cursus_app/ui/widgets/rounded_text_input.dart';
 import 'package:cursus_app/values/values.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:intl/intl.dart';
 
 class AddNewPatientPage extends StatefulWidget {
   final int? id;
   final PatientState patientState;
-  const AddNewPatientPage({Key? key, this.id,required this.patientState}) : super(key: key);
+  const AddNewPatientPage({Key? key, this.id, required this.patientState})
+      : super(key: key);
 
   @override
   _AddNewPatientPageState createState() => _AddNewPatientPageState();
@@ -339,9 +339,10 @@ class _AddNewPatientPageState extends State<AddNewPatientPage> {
                                 } else {
                                   await addPatientState.updatePatient();
                                 }
-                                widget.patientState.pagingController.itemList!.clear();
+                                widget.patientState.pagingController.itemList!
+                                    .clear();
                                 await widget.patientState.getPatients();
-                                 widget.patientState.pagingController.refresh();
+                                widget.patientState.pagingController.refresh();
 
                                 await AutoRouter.of(context).pop();
                               },

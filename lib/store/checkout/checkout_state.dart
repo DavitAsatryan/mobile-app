@@ -13,7 +13,6 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:cursus_app/router.gr.dart';
-import 'package:overlay_support/overlay_support.dart';
 
 part 'checkout_state.g.dart';
 

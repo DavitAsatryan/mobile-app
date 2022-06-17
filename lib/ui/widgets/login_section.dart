@@ -73,6 +73,7 @@ class _LoginSectionState extends State<LoginSection> {
           children: [
             Observer(
               builder: (_) => TextInput(
+                number: true,
                 onChanged: (value) =>
                     widget.authorizationState.phoneNumberLogin = value,
                 textInputAction: TextInputAction.next,

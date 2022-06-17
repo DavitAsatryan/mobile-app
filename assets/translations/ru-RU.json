@@ -186,7 +186,7 @@
     "invalidEmail": "Недействительный адрес эл почты",
     "invalidPhoneNumber": "Недействительный номер телефона",
     "repeatNewPasswordIsRequired": "Повторить новый пароль",
-    "lastNameValidate": "Фамилия должна содержать не менее 3 символов",
+    "lastNameValidate": "Фамилия должна содержать не менее 5 символов",
     "firstNameValidate": "Имя должно содержать не менее 3 символов"
   },
   "hints": {
@@ -194,10 +194,14 @@
     "phoneNumber": "Номер телефона",
     "phoneShort": "Тел: ",
     "surname": "Фамилия",
-    "name": "Имя"
+    "name": "Имя",
+    "male": "Парень",
+    "female": "Девочка",
+    "gender": "Пол"
   },
   "error": {
     "validation_error": "Ошибка проверки",
+    "Required_field": "Обязательное поле",
     "invalid_pass_code": "Неверный PIN-код",
     "no_app_to_open": "Приложение для открытия такого типа файла не найдено"
   },

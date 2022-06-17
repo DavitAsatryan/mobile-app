@@ -8,6 +8,8 @@ part of 'bundle_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+import 'package:cursus_app/model/bundle/bundle_model.dart';
+
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(

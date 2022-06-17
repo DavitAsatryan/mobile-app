@@ -5,7 +5,6 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
-import 'package:nil/nil.dart';
 
 import '../../../values/values.dart';
 import '../loading.dart';

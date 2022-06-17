@@ -1,17 +1,12 @@
-import 'dart:math';
-
-import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:cursus_app/helpers/auth_helpers.dart';
-import 'package:cursus_app/store/notification/notification_state.dart';
+import 'package:cursus_app/constants/theme/app_theme.dart';
 import 'package:cursus_app/store/store_state/store_state.dart';
 import 'package:easy_localization/src/public_ext.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 import '../../../helpers/screen_size_accessor.dart';
 import '../../../store/authorization/authorization_state.dart';
@@ -89,6 +84,14 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
                     Column(
                       children: [
                         MainButton(
+                          keyPage:
+                              _controller.hasClients && _controller.page != 0
+                                  ? 1
+                                  : null,
+                          controller:
+                              _controller.hasClients && _controller.page == 0
+                                  ? _controller.page
+                                  : null,
                           callback: _controller.hasClients &&
                                   _controller.page == 0
                               ? !authorizationState.errors.loginHasErrors &&
@@ -100,10 +103,12 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
                                           .errors.registerationHasErrors &&
                                       authorizationState.password.isNotEmpty &&
                                       authorizationState.firstName.isNotEmpty &&
+                                      authorizationState.gender.isNotEmpty &&
                                       authorizationState
                                           .agreedToTermsAndConditions &&
                                       authorizationState.agreedToSmsNotification
                                   ? authorize
+                                  //note null
                                   : null,
                           label: _controller.hasClients
                               ? _controller.page == 0
@@ -125,6 +130,7 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
                                           : 'haveAnAccount'.tr()
                                       : '',
                                   style: TextStyle(
+                                      overflow: TextOverflow.ellipsis,
                                       color: AppColors.textColorOps85,
                                       fontSize: 14),
                                   children: <TextSpan>[
@@ -135,6 +141,7 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
                                                 : ' ${'signIn'.tr()}'
                                             : '',
                                         style: const TextStyle(
+                                            overflow: TextOverflow.ellipsis,
                                             fontWeight: FontWeight.w700,
                                             //fontWeight: FontWeight.w600,
                                             color: AppColors.textColor),

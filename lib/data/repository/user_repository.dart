@@ -13,7 +13,8 @@ class UserRepository {
     try {
       final response = await dio.get('v1/me');
       return UserModel.fromJson(response.data['result']);
-    } on DioError catch (e) {}
+    } on DioError {}
+    return null;
   }
 
   Future<void> updateUser(UserModel userModel) async {

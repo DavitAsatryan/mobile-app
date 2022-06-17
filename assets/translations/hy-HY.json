@@ -46,8 +46,8 @@
   "passwordChanged": "Գաղտնաբառը փոխված է",
   "verifiedAccount": "Ձեր հեռախոսահամարը հաստատված է",
   "iAgreeWith": "Ես համաձայն եմ ",
-  "termsConditions": "Ընդհանուր դրույթներին և պայմաններին",
-  "agreeReceiveNotif": "Ես համաձայն եմ ստանալ SMS հաղորդագրություններ",
+  "termsConditions": "Ընդհանուր \nդրույթներին և պայմաններին",
+  "agreeReceiveNotif": "Ես համաձայն եմ ստանալ SMS \nհաղորդագրություններ",
   "paymentSuccessfullyProceeded": "Վճարումը կատարվել է",
   "useBiometricsToLogin": "Մուտք կենսաչափական տվյալներով",
   "noOrders": "Դուք դեռ չունեք պատվերներ",
@@ -186,7 +186,7 @@
     "invalidEmail": "Անվավեր էլ հասցե",
     "invalidPhoneNumber": "Անվավեր հեռախոսահամար",
     "repeatNewPasswordIsRequired": "Կրկնել նոր ծածկագիրը",
-    "lastNameValidate": "Ազգանունը պետք է պարունակի առնվազն 3 նիշ",
+    "lastNameValidate": "Ազգանունը պետք է պարունակի առնվազն 5 նիշ",
     "firstNameValidate": "Անունը պետք է պարունակի առնվազն 3 նիշ"
   },
   "hints": {
@@ -194,10 +194,14 @@
     "phoneNumber": "Հեռախոսահամար",
     "phoneShort": "Հեռ: ",
     "surname": "Ազգանուն",
-    "name": "Անուն"
+    "name": "Անուն",
+    "male": "Տղա",
+    "female": "Աղջիկ",
+    "gender": "Սեռ"
   },
   "error": {
     "validation_error": "Վավերացման սխալ",
+    "Required_field": "Պարտադիր լրացման դաշտ",
     "invalid_pass_code": "Սխալ PIN կոդ",
     "no_app_to_open": "Ֆայլը բացելու համար ոչ մի ծրագիր չի գտնվել "
   },

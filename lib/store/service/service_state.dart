@@ -123,7 +123,7 @@ abstract class _ServiceState with Store {
         categoryBackgroundColorList.add(randomItemColor);
       }
       storeState.state = StoreStates.success;
-    } on DioError catch (e) {
+    } on DioError {
     } finally {
       storeState.state = StoreStates.error;
     }

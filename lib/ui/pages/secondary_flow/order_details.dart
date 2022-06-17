@@ -9,11 +9,8 @@ import 'package:cursus_app/ui/widgets/buttons/outlined_main_button.dart';
 import 'package:cursus_app/ui/widgets/custom_appbar.dart';
 import 'package:cursus_app/values/values.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:easy_localization/src/public_ext.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:intl/intl.dart';
 
 class OrderDetailsPage extends StatefulWidget {
   final int oderID;

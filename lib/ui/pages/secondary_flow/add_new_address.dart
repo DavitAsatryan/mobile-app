@@ -15,11 +15,9 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:google_maps_webservice/geocoding.dart';
 import 'package:google_api_headers/google_api_headers.dart';
 
 import 'package:google_maps_webservice/places.dart';
-import 'package:location/location.dart';
 
 class AddNewAddressPage extends StatefulWidget {
   final int? id;
@@ -240,26 +238,24 @@ class _AddNewAddressPageState extends State<AddNewAddressPage> {
   }
 
   Future<Null> displayPrediction(Prediction p, ScaffoldState scaffold) async {
-    if (p != null) {
-      GoogleMapsPlaces _places = GoogleMapsPlaces(
-        apiKey: StringConst.mapKey,
-        apiHeaders: await GoogleApiHeaders().getHeaders(),
-      );
-      PlacesDetailsResponse detail =
-          await _places.getDetailsByPlaceId(p.placeId!);
-      final lat = detail.result.geometry!.location.lat;
-      final lng = detail.result.geometry!.location.lng;
-      widget.addressState.selectedAddress = widget.addressState.selectedAddress
-          .copyWith(
-              latitude: lat,
-              longitude: lng,
-              address: detail.result.formattedAddress,
-              isDefault: false,
-              city: 'asd',
-              country: 'asd',
-              zipCode: 'asd');
-      LatLng place = LatLng(lat, lng);
-      _handleTap(place);
-    }
+    GoogleMapsPlaces _places = GoogleMapsPlaces(
+      apiKey: StringConst.mapKey,
+      apiHeaders: await GoogleApiHeaders().getHeaders(),
+    );
+    PlacesDetailsResponse detail =
+        await _places.getDetailsByPlaceId(p.placeId!);
+    final lat = detail.result.geometry!.location.lat;
+    final lng = detail.result.geometry!.location.lng;
+    widget.addressState.selectedAddress = widget.addressState.selectedAddress
+        .copyWith(
+            latitude: lat,
+            longitude: lng,
+            address: detail.result.formattedAddress,
+            isDefault: false,
+            city: 'asd',
+            country: 'asd',
+            zipCode: 'asd');
+    LatLng place = LatLng(lat, lng);
+    _handleTap(place);
   }
 }

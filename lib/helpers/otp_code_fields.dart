@@ -18,7 +18,6 @@ class OtpCodeFields extends StatefulWidget {
   /// length of how many cells there should be. 3-8 is recommended by me
   final int length;
 
-
   /// returns the current typed text in the fields
   final ValueChanged<String> onChanged;
 
@@ -32,7 +31,7 @@ class OtpCodeFields extends StatefulWidget {
   final TextStyle? textStyle;
 
   /// the style of the pasted text, default is [fontWeight: FontWeight.bold] while
-  /// [TextStyle.color] is [ThemeData.accentColor]
+  /// [TextStyle.color] is [ThemeData.colorScheme.secondary]
   final TextStyle? pastedTextStyle;
 
   /// background color for the whole row of pin code fields.
@@ -223,7 +222,6 @@ class _OtpCodeFieldsState extends State<OtpCodeFields>
   int _selectedIndex = 0;
   BorderRadius? borderRadius;
 
-
   late AnimationController _controller;
 
   late AnimationController _cursorController;
@@ -243,7 +241,6 @@ class _OtpCodeFieldsState extends State<OtpCodeFields>
           dialogTitle: widget.dialogConfig!.dialogTitle,
           negativeText: widget.dialogConfig!.negativeText);
 
-
   TextStyle get _textStyle => TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
@@ -253,7 +250,6 @@ class _OtpCodeFieldsState extends State<OtpCodeFields>
 
   @override
   void initState() {
-
     _checkForInvalidValues();
     _assignController();
 
@@ -262,7 +258,6 @@ class _OtpCodeFieldsState extends State<OtpCodeFields>
       setState(() {});
     }); // Rebuilds on every change to reflect the correct color on each field.
     _inputList = List<String>.filled(widget.length, "");
-
 
     _cursorController = AnimationController(
         duration: Duration(milliseconds: 1000), vsync: this);
@@ -403,7 +398,7 @@ class _OtpCodeFieldsState extends State<OtpCodeFields>
         widget.showCursor) {
       final cursorColor = widget.cursorColor ??
           Theme.of(widget.appContext).textSelectionTheme.cursorColor ??
-          Theme.of(context).accentColor;
+          Theme.of(context).colorScheme.secondary;
       final cursorHeight = widget.cursorHeight ?? _textStyle.fontSize! + 8;
 
       if ((_selectedIndex == index + 1 && index + 1 == widget.length)) {
@@ -450,13 +445,14 @@ class _OtpCodeFieldsState extends State<OtpCodeFields>
   }
 
   Future<void> _showPasteDialog(String pastedText) {
+    print(2222);
     final formattedPastedText = pastedText
         .trim()
         .substring(0, min(pastedText.trim().length, widget.length));
 
     final defaultPastedTextStyle = TextStyle(
       fontWeight: FontWeight.bold,
-      color: Theme.of(context).accentColor,
+      color: Theme.of(context).colorScheme.secondary,
     );
 
     return showDialog(
@@ -742,8 +738,6 @@ class _OtpCodeFieldsState extends State<OtpCodeFields>
   }
 }
 
-
-
 class CursorPainter extends CustomPainter {
   final Color cursorColor;
   final double cursorWidth;
@@ -765,7 +759,6 @@ class CursorPainter extends CustomPainter {
   }
 }
 
-
 class DialogConfig {
   final String? dialogTitle;
   final String? dialogContent;
@@ -783,10 +776,10 @@ class DialogConfig {
 
   factory DialogConfig(
       {String? affirmativeText,
-        String? dialogContent,
-        String? dialogTitle,
-        String? negativeText,
-        Platform? platform}) {
+      String? dialogContent,
+      String? dialogTitle,
+      String? negativeText,
+      Platform? platform}) {
     return DialogConfig._internal(
       affirmativeText: affirmativeText == null ? "Paste" : affirmativeText,
       dialogContent: dialogContent == null
@@ -803,5 +796,3 @@ enum AnimationType { scale, slide, fade, none }
 enum Platform { iOS, other } //other indicates for web and android
 enum PinCodeFieldShape { box, underline, circle }
 enum ErrorAnimationType { shake }
-
-

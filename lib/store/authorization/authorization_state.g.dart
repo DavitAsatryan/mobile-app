@@ -69,6 +69,21 @@ mixin _$AuthorizationState on _AuthorizationState, Store {
     });
   }
 
+  final _$genderAtom = Atom(name: '_AuthorizationState.gender');
+
+  @override
+  String get gender {
+    _$genderAtom.reportRead();
+    return super.gender;
+  }
+
+  @override
+  set gender(String value) {
+    _$genderAtom.reportWrite(value, super.gender, () {
+      super.gender = value;
+    });
+  }
+
   final _$phoneNumberLoginAtom =
       Atom(name: '_AuthorizationState.phoneNumberLogin');
 
@@ -251,6 +266,7 @@ mixin _$AuthorizationState on _AuthorizationState, Store {
 
   @override
   void validateFirstName(dynamic _) {
+    print(123456);
     final _$actionInfo = _$_AuthorizationStateActionController.startAction(
         name: '_AuthorizationState.validateFirstName');
     try {
@@ -288,6 +304,17 @@ mixin _$AuthorizationState on _AuthorizationState, Store {
         name: '_AuthorizationState.validatePhoneNumber');
     try {
       return super.validatePhoneNumber(_);
+    } finally {
+      _$_AuthorizationStateActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void validateGender(dynamic _) {
+    final _$actionInfo = _$_AuthorizationStateActionController.startAction(
+        name: '_AuthorizationState.validateGender');
+    try {
+      return super.validateGender(_);
     } finally {
       _$_AuthorizationStateActionController.endAction(_$actionInfo);
     }
@@ -392,17 +419,17 @@ mixin _$AuthorizationStateErrors on _AuthorizationStateErrors, Store {
     });
   }
 
-  final _$phoneNumberAtom = Atom(name: '_AuthorizationStateErrors.phoneNumber');
+  final $phoneNumberAtom = Atom(name: '_AuthorizationStateErrors.phoneNumber');
 
   @override
   String? get phoneNumber {
-    _$phoneNumberAtom.reportRead();
+    $phoneNumberAtom.reportRead();
     return super.phoneNumber;
   }
 
   @override
   set phoneNumber(String? value) {
-    _$phoneNumberAtom.reportWrite(value, super.phoneNumber, () {
+    $phoneNumberAtom.reportWrite(value, super.phoneNumber, () {
       super.phoneNumber = value;
     });
   }

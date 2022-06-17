@@ -1,4 +1,3 @@
-
 import 'package:cursus_app/store/notification/notification_state.dart';
 import 'package:cursus_app/store/personal_data_state/personal_data_state.dart';
 import 'package:cursus_app/ui/pages/main_navigation/account_page.dart';
@@ -9,8 +8,6 @@ import 'package:cursus_app/ui/pages/order/new_order_page.dart';
 import 'package:cursus_app/ui/widgets/custom_bottom_navigation_item.dart';
 import 'package:cursus_app/ui/widgets/loading.dart';
 import 'package:easy_localization/src/public_ext.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';

@@ -1,17 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:awesome_notifications/awesome_notifications.dart'
-    hide NotificationModel;
 import 'package:cursus_app/model/notification_model/notification_model.dart';
-import 'package:cursus_app/store/add_patient_state.dart/add_patient_state.dart';
 import 'package:cursus_app/store/notification/notification_state.dart';
 import 'package:cursus_app/store/patients/patients_state.dart';
 import 'package:cursus_app/store/store_state/store_state.dart';
 import 'package:cursus_app/ui/widgets/loading.dart';
 import 'package:cursus_app/values/values.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:cursus_app/router.gr.dart';

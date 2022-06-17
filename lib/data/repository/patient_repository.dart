@@ -91,7 +91,7 @@ class PatientRepository {
         'v1/patient/$id',
         data: patientModel.toJson(),
       );
-    } on DioError catch (e) {
+    } on DioError {
     } catch (e) {
       throw UnknownException();
     }

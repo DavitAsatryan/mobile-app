@@ -8,7 +8,6 @@ import 'package:cursus_app/ui/widgets/search_box.dart';
 import 'package:cursus_app/ui/widgets/service_search_overlay.dart';
 import 'package:cursus_app/values/values.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';

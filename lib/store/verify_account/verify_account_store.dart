@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:basic_utils/basic_utils.dart';
 import 'package:cursus_app/data/repository/authorization_repository.dart';
 import 'package:cursus_app/helpers/auth_helpers.dart';
 import 'package:cursus_app/helpers/storage_helper.dart';
 import 'package:cursus_app/store/notification/notification_state.dart';
 import 'package:cursus_app/store/store_state/store_state.dart';
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -78,8 +78,9 @@ abstract class _VerifyAccountState with Store {
         ) ??
         '';
 
-    // if (StringUtils.isNullOrEmpty(firebaseAppToken,
-    //     considerWhiteSpaceAsEmpty: true)) return;
+    if (StringUtils.isNullOrEmpty(
+      firebaseAppToken,
+    )) return;
 
     print('Firebase token: $firebaseAppToken');
     // initialize firebase before actual app get start.
@@ -91,33 +92,31 @@ abstract class _VerifyAccountState with Store {
       print('Got a message whilst in the foreground!');
       print('Message data: ${message.data}');
 
-      // if (!StringUtils.isNullOrEmpty(message.notification?.title,
-      //         considerWhiteSpaceAsEmpty: true) ||
-      //     !StringUtils.isNullOrEmpty(message.notification?.body,
-      //         considerWhiteSpaceAsEmpty: true)) {
-      //   print('Message also contained a notification: ${message.notification}');
+      if (!StringUtils.isNullOrEmpty(message.notification?.title) ||
+          !StringUtils.isNullOrEmpty(message.notification?.body)) {
+        print('Message also contained a notification: ${message.notification}');
 
-      String? imageUrl;
-      imageUrl ??= message.notification!.android?.imageUrl;
-      imageUrl ??= message.notification!.apple?.imageUrl;
+        String? imageUrl;
+        imageUrl ??= message.notification!.android?.imageUrl;
+        imageUrl ??= message.notification!.apple?.imageUrl;
 
-      Map<String, dynamic> notificationAdapter = {
-        NOTIFICATION_CONTENT: {
-          NOTIFICATION_ID: Random().nextInt(2147483647),
-          NOTIFICATION_CHANNEL_KEY: 'basic_channel',
-          NOTIFICATION_TITLE: message.notification!.title,
-          NOTIFICATION_BODY: message.notification!.body,
-          // NOTIFICATION_LAYOUT:
-          //     StringUtils.isNullOrEmpty(imageUrl) ? 'Default' : 'BigPicture',
-          NOTIFICATION_BIG_PICTURE: imageUrl
-        }
-      };
+        Map<String, dynamic> notificationAdapter = {
+          NOTIFICATION_CONTENT: {
+            NOTIFICATION_ID: Random().nextInt(2147483647),
+            NOTIFICATION_CHANNEL_KEY: 'basic_channel',
+            NOTIFICATION_TITLE: message.notification!.title,
+            NOTIFICATION_BODY: message.notification!.body,
+            NOTIFICATION_LAYOUT:
+                StringUtils.isNullOrEmpty(imageUrl) ? 'Default' : 'BigPicture',
+            NOTIFICATION_BIG_PICTURE: imageUrl
+          }
+        };
 
-      AwesomeNotifications()
-          .createNotificationFromJsonData(notificationAdapter);
-      // } else {
-      //   AwesomeNotifications().createNotificationFromJsonData(message.data);
-      // }
+        AwesomeNotifications()
+            .createNotificationFromJsonData(notificationAdapter);
+      } else {
+        AwesomeNotifications().createNotificationFromJsonData(message.data);
+      }
     });
   }
 }

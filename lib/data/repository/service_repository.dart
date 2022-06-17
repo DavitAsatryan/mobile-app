@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:cursus_app/data/exceptions/dio_error_codes.dart';
 import 'package:cursus_app/data/exceptions/general_exceptions.dart';
 import 'package:cursus_app/model/category/category_model.dart';
-import 'package:cursus_app/model/category_list_response/category_list_response.dart';
 import 'package:cursus_app/model/root_category/root_category_model.dart';
 import 'package:cursus_app/model/service/service_model.dart';
 import 'package:dio/dio.dart';

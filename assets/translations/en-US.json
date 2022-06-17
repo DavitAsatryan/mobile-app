@@ -184,7 +184,7 @@
     "invalidEmail": "Invalid email",
     "invalidPhoneNumber": "Invalid phone number",
     "repeatNewPasswordIsRequired": "Repeat new password",
-    "lastNameValidate": "Last name must contain at least 3 characters",
+    "lastNameValidate": "Last name must contain at least 5 characters",
     "firstNameValidate": "First name must contain at least 3 characters"
   },
   "hints": {
@@ -192,10 +192,14 @@
     "phoneNumber": "Phone number",
     "phoneShort": "Phone: ",
     "surname": "Surname",
-    "name": "Name"
+    "name": "Name",
+    "male": "Male",
+    "female": "Female",
+    "gender": "Gender"
   },
   "error": {
     "validation_error": "Validator error",
+    "Required_field": "Required field",
     "invalid_pass_code": "Wrong PIN",
     "no_app_to_open": "No app found to open this file"
   },

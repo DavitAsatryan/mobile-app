@@ -1,5 +1,3 @@
-import 'package:cursus_app/constants/enum/order_status.dart';
-import 'package:cursus_app/model/order/amount_model.dart';
 import 'package:cursus_app/model/order/payment.dart';
 import 'package:cursus_app/model/order/transportation_details.dart';
 import 'package:cursus_app/model/patient/patient_model.dart';

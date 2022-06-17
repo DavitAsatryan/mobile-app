@@ -1,7 +1,6 @@
 import 'package:cursus_app/store/forgot_password/forgot_password.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import '../../../../formatters.dart';
 import '../../../../values/values.dart';

@@ -1,16 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cursus_app/router.gr.dart';
-import 'package:cursus_app/store/personal_data_state/personal_data_state.dart';
-import 'package:cursus_app/store/store_state/store_state.dart';
 import 'package:cursus_app/ui/widgets/avatar_widget.dart';
 import 'package:cursus_app/ui/widgets/bottom_sheet_dialog/dilemma_bottom_sheet.dart';
 import 'package:cursus_app/ui/widgets/cursus_icons.dart';
-import 'package:cursus_app/ui/widgets/loading.dart';
 import 'package:cursus_app/values/values.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get_it/get_it.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);

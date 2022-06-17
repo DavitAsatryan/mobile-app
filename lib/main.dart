@@ -1,8 +1,3 @@
-import 'dart:math';
-
-import 'package:awesome_notifications/android_foreground_service.dart';
-import 'package:cursus_app/values/values.dart';
-import 'package:flutter/cupertino.dart' hide Router;
 import 'package:flutter/material.dart' hide Router;
 import 'router.gr.dart' as app_router;
 import 'package:cursus_app/providers/get_it.dart';
@@ -23,9 +18,7 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  await Firebase
-      .initializeApp();
-
+  await Firebase.initializeApp();
 
   await GetStorage.init();
   await EasyLocalization.ensureInitialized();

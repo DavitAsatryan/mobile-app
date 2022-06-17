@@ -44,7 +44,10 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'keywords.about_us'.tr(), toolBarHeight: 50,),
+      appBar: CustomAppBar(
+        title: 'keywords.about_us'.tr(),
+        toolBarHeight: 50,
+      ),
       body: Observer(
         builder: (_) => dashboardState.storeStates.state == StoreStates.loading
             ? Center(
@@ -242,6 +245,7 @@ class _GetInTouchState extends State<_GetInTouch> {
                 height: 50,
               ),
               MainButton(
+              
                 callback: messageController.text.isEmpty
                     ? null
                     : () async {

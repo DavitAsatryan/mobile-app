@@ -29,7 +29,7 @@ class GenderPicker extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: _GenderContainer(
+                child: GenderContainer(
                   value: 'Male',
                   groupValue: selectedGender,
                   onChanged: onChanged,
@@ -39,7 +39,7 @@ class GenderPicker extends StatelessWidget {
                 width: 10,
               ),
               Expanded(
-                child: _GenderContainer(
+                child: GenderContainer(
                   value: 'Female',
                   groupValue: selectedGender,
                   onChanged: onChanged,
@@ -53,11 +53,11 @@ class GenderPicker extends StatelessWidget {
   }
 }
 
-class _GenderContainer extends StatelessWidget {
+class GenderContainer extends StatelessWidget {
   final String value;
   final String groupValue;
   final ValueChanged<String?>? onChanged;
-  const _GenderContainer({
+  const GenderContainer({
     required this.value,
     required this.groupValue,
     required this.onChanged,

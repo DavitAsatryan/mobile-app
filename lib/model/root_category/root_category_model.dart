@@ -1,4 +1,3 @@
-import 'package:cursus_app/model/service/service_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'root_category_model.freezed.dart';

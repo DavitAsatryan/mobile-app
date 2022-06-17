@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:cursus_app/model/bundle/bundle_model.dart';
 import 'package:cursus_app/values/values.dart';

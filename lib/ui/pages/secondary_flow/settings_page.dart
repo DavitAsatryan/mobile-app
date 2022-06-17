@@ -1,5 +1,3 @@
-import 'package:auto_route/annotations.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:cursus_app/helpers/overlay_helper.dart';
 import 'package:cursus_app/helpers/storage_helper.dart';
 import 'package:cursus_app/ui/widgets/custom_appbar.dart';

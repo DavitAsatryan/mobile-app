@@ -1,6 +1,3 @@
-import 'package:cursus_app/data/exceptions/general_exceptions.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthentication {
   // FirebaseAuth firebaseAuth;

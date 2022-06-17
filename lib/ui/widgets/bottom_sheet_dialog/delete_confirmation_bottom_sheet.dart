@@ -1,6 +1,5 @@
 import 'package:cursus_app/constants/theme/app_theme.dart';
 import 'package:cursus_app/values/values.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 

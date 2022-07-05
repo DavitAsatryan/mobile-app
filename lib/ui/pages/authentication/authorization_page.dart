@@ -46,8 +46,8 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: Observer(
-        builder: (_) => SingleChildScrollView(
+      body: Observer(builder: (context) {
+        return SingleChildScrollView(
           child: SizedBox(
             height: screenHeight(context),
             child: Stack(
@@ -176,8 +176,8 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
               ],
             ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 
@@ -199,8 +199,8 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
   void animateToCurrentPage() {
     _controller.page == 0
         ? _controller.nextPage(
-            duration: const Duration(milliseconds: 400), curve: Curves.easeIn)
+            duration: const Duration(milliseconds: 200), curve: Curves.easeIn)
         : _controller.previousPage(
-            duration: const Duration(milliseconds: 400), curve: Curves.easeIn);
+            duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
   }
 }

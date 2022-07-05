@@ -165,7 +165,7 @@ abstract class _AuthorizationState with Store {
   @action
   void validatePhoneNumberLogin(_) {
     final phoneNumberLogin = this.phoneNumberLogin.trim();
-
+    print(phoneNumberLogin);
     if (phoneNumberLogin.isEmpty) {
       errors.phoneNumberLogin = 'localValidationErrors.phoneRequired'.tr();
     } else if (
@@ -235,7 +235,6 @@ abstract class _AuthorizationState with Store {
       try {
         storeState.changeState(StoreStates.loading);
         phoneNumber = '+374${maskFormatter.getUnmaskedText()}';
-
         String? deviceId = await getDeviceId();
         if (deviceId != null) {
           final transformedNumber = formatPhoneNumber(phoneNumber);
@@ -253,8 +252,8 @@ abstract class _AuthorizationState with Store {
           await StorageHelper.setToken(result.jwtToken);
           await StorageHelper.setRefreshKey(result.refreshKey);
 
-          //await initializeFirebaseService();
-          //await notificationState.sendFCM(_firebaseAppToken, deviceId);
+          await initializeFirebaseService();
+          await notificationState.sendFCM(_firebaseAppToken, deviceId);
           storeState.changeState(StoreStates.success);
           await AutoRouter.of(context).replace(const DashboardRoute());
         } //error alert

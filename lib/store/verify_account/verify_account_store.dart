@@ -63,6 +63,7 @@ abstract class _VerifyAccountState with Store {
 
       await initializeFirebaseService();
       await notificationState.sendFCM(_firebaseAppToken, deviceId);
+      print(_firebaseAppToken);
       AutoRouter.of(context).replace(const DashboardRoute());
     } on Exception catch (e) {
       storeState.setErrorMessage(e.toString());
@@ -78,11 +79,12 @@ abstract class _VerifyAccountState with Store {
         ) ??
         '';
 
-    if (StringUtils.isNullOrEmpty(
-      firebaseAppToken,
-    )) return;
-
+    // String tokenF = await messaging.getToken();
     print('Firebase token: $firebaseAppToken');
+    // if (StringUtils.isNullOrEmpty(
+    //   firebaseAppToken,
+    // )) return;
+
     // initialize firebase before actual app get start.
     // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
     _firebaseAppToken = firebaseAppToken;

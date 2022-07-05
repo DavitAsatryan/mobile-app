@@ -5,6 +5,7 @@ import 'package:cursus_app/ui/widgets/signup_section.dart';
 import 'package:cursus_app/values/values.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:overlay_support/overlay_support.dart';
 
 class MainButton extends StatefulWidget {
@@ -65,20 +66,34 @@ class MainButtonState extends State<MainButton> {
               SignUpSection.validHide = true;
               if (SignUpSectionState.formKey.currentState!.validate()) {}
 
-              setState(() {
-                if (SignUpSectionState.groupValue == 0) {
-                  SignUpSectionState.genderValid = true;
+              // if (SignUpSectionState.groupValue != 1 ||
+              //     SignUpSectionState.groupValue != 2) {
+              //   setState(() {
+              //     SignUpSectionState.genderValid = true;
+              //   });
+              // }
+              // if (SignUpSectionState.agreeValue != 1) {
+              //   setState(() {
+              //     SignUpSectionState.agreeValidOne = true;
+              //   });
+              // }
+              // if (SignUpSectionState.agreeValueTwo != 2) {
+              //   setState(() {
+              //     SignUpSectionState.agreeValidTwo = true;
+              //   });
+              // }
+              // if (SignUpSectionState.agreeValue == 0) {
+              //   setState(() {
+              //     SignUpSectionState.agreeValidOne = true;
+              //   });
+              // }
 
-                  print(SignUpSectionState.genderValid);
-                }
-
-                if (SignUpSectionState.agreeValue == 0) {
-                  SignUpSectionState.agreeValidOne = true;
-                }
-                if (SignUpSectionState.agreeValueTwo == 0) {
-                  SignUpSectionState.agreeValidTwo = true;
-                }
-              });
+              // setState(() {
+              //   if (SignUpSectionState.agreeValueTwo == 0) {
+              //     SignUpSectionState.agreeValueTwo = 2;
+              //     //SignUpSectionState.agreeValidTwo = true;
+              //   }
+              // });
             }
           },
           // : showCustomOverlayNotification(

@@ -1,3 +1,5 @@
+import 'package:cursus_app/firebase_options.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'router.gr.dart' as app_router;
 import 'package:cursus_app/providers/get_it.dart';
@@ -10,6 +12,20 @@ import 'package:overlay_support/overlay_support.dart';
 import 'constants/theme/app_theme.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 
+// const AndroidNotificationChannel channel = AndroidNotificationChannel(
+//     'high_importance_channel', // id
+//     'High Importance Notifications', // title
+//     importance: Importance.high,
+//     playSound: true);
+
+// final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+//     FlutterLocalNotificationsPlugin();
+
+// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+//   await Firebase.initializeApp();
+//   print('A bg message just showed up :  ${message.messageId}');
+// }
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   registerGetIt();
@@ -17,20 +33,32 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  // if (kIsWeb) {
+  await Firebase.initializeApp(
+    name: 'cursuscare',
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  // } else {
+  //   await Firebase.initializeApp();
+  // }
 
-  await Firebase.initializeApp();
-
+  FirebaseMessaging.instance.getToken().then((value) {
+    print("token $value");
+  });
   await GetStorage.init();
   await EasyLocalization.ensureInitialized();
 
-  AwesomeNotifications().initialize(null, [
-    NotificationChannel(
-        channelKey: 'basic_channel',
-        channelName: 'Basic notifications',
-        channelDescription: 'Notification channel for basic tests',
-        defaultColor: Color(0xFF9D50DD),
-        ledColor: Colors.white)
-  ]);
+  AwesomeNotifications().initialize(
+    null,
+    [
+      NotificationChannel(
+          channelKey: 'basic_channel',
+          channelName: 'Basic notifications',
+          channelDescription: 'Notification channel for basic tests',
+          defaultColor: Color(0xFF9D50DD),
+          ledColor: Colors.white)
+    ],
+  );
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   runApp(
@@ -53,7 +81,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // make sure you call `initializeApp` before using other Firebase services.
 
   print("Handling a background message: ${message.messageId}");
-
+  // await Firebase.initializeApp();
   // Use this method to automatically convert the push data, in case you gonna use our data standard
   AwesomeNotifications().createNotificationFromJsonData(message.data);
 }

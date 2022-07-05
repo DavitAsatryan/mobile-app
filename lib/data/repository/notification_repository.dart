@@ -71,8 +71,10 @@ class NotificationRepository {
   }
 
   Future<void> sendFCM(String FCM, String deviceID) async {
+    print(FCM);
     try {
-      await dio.post('v1/device/register', data: {'fcmToken': FCM, 'deviceId': deviceID});
+      await dio.post('v1/device/register',
+          data: {'fcmToken': FCM, 'deviceId': deviceID});
     } on DioError catch (e) {
       if (e.error is SocketException || e.type == DioErrorType.connectTimeout) {
         throw NoInternetException();
@@ -82,8 +84,8 @@ class NotificationRepository {
           throw UnauhtorizedException();
         }
         throw BadRequestException(
-          message: e.response!.data!['message'],
-        );
+          message: "",
+        ); // e.response!.data!['message']
       }
       if (is500StatusCodeFamily(e.error)) {
         throw ServerException();

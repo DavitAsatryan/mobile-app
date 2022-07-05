@@ -262,7 +262,9 @@ class _PatientDetails extends StatelessWidget {
                   ),
                   Text(
                     orderDetailsModel.user.birthDate != null
-                        ? orderDetailsModel.user.gender == null ? 'notSpecified'.tr() : '${orderDetailsModel.user.gender}, ${_calcAge(orderDetailsModel.user.birthDate!)}'
+                        ? orderDetailsModel.user.gender == null
+                            ? 'notSpecified'.tr()
+                            : '${orderDetailsModel.user.gender}, ${_calcAge(orderDetailsModel.user.birthDate!)}'
                         : '${orderDetailsModel.user.gender}',
                     maxLines: 1,
                     style: TextStyle(
@@ -270,7 +272,8 @@ class _PatientDetails extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'hints.phoneNumber'.tr() + '${orderDetailsModel.user.phone}',
+                    'hints.phoneNumber'.tr() +
+                        '${orderDetailsModel.user.phone}',
                     maxLines: 2,
                     style: TextStyle(
                       fontSize: 17,

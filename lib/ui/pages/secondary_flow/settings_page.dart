@@ -61,7 +61,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   );
                 }).toList(),
                 onChanged: (language) {
-
                   if (language == Lists.languages[0]) {
                     context.setLocale(const Locale('en', 'US'));
                     StorageHelper.setLanguage('en_US');
@@ -75,8 +74,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   setState(() {
                     _chosenValue = language;
                   });
-                 },
-
+                },
               ),
               SizedBox(
                 height: 30,
@@ -112,6 +110,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   Text(
                     'biometrics'.tr(),
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,

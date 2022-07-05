@@ -50,8 +50,8 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Observer(
-      builder: (_) => SingleChildScrollView(
+    return Observer(builder: (context) {
+      return SingleChildScrollView(
         child: bundleState.storeState.state == StoreStates.loading
             ? const Loading(
                 color: Colors.transparent,
@@ -127,87 +127,83 @@ class _HomePageState extends State<HomePage>
                   ),
                   SizedBox(
                     height: 150,
-                    child: Observer(
-                      builder: (_) => ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (listContext, index) {
-                          return InkWell(
-                            onTap: () async {
-                              await AutoRouter.of(context).push(
-                                  SubCategoryRoute(
-                                      categoryId: serviceState
-                                          .rootCategoryList[index].id));
-                            },
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 20),
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    width: 170,
-                                    height: 120,
-                                    child: SvgPicture.asset(
-                                      'assets/illustrations/ill_menu_item_background.svg',
-                                      color: serviceState.rootCategoryList[index]
-                                                  .color !=
-                                              null
-                                          ? Color(0xFF +
-                                              int.parse(serviceState
-                                                  .rootCategoryList[index]
-                                                  .color!))
-                                          : serviceState
-                                              .categoryBackgroundColorList[index],
-                                    ),
-                                  ),
-                                  Positioned(
-                                    bottom: 50,
-                                    left: 25,
-                                    right: 25,
-                                    top: 10,
-                                    child: serviceState
-                                                .rootCategoryList[index].icon ==
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (listContext, index) {
+                        return InkWell(
+                          onTap: () async {
+                            await AutoRouter.of(context).push(SubCategoryRoute(
+                                categoryId:
+                                    serviceState.rootCategoryList[index].id));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: 170,
+                                  height: 120,
+                                  child: SvgPicture.asset(
+                                    'assets/illustrations/ill_menu_item_background.svg',
+                                    color: serviceState.rootCategoryList[index]
+                                                .color !=
                                             null
-                                        ? SvgPicture.asset(
-                                            'assets/icons/ic_default.svg',
-                                          )
-                                        : Image.network(
-                                            '$baseUrl${serviceState.rootCategoryList[index].icon}'),
+                                        ? Color(0xFF +
+                                            int.parse(serviceState
+                                                .rootCategoryList[index]
+                                                .color!))
+                                        : serviceState
+                                            .categoryBackgroundColorList[index],
                                   ),
-                                  Positioned(
-                                    top: 105,
-                                    bottom: 0,
-                                    right: -5,
-                                    left: -5,
-                                    child: Text(
-                                      serviceState.rootCategoryList[index].name,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline2!
-                                          .copyWith(fontSize: 16),
-                                      textAlign: TextAlign.center,
-                                    ),
+                                ),
+                                Positioned(
+                                  bottom: 50,
+                                  left: 25,
+                                  right: 25,
+                                  top: 10,
+                                  child: serviceState
+                                              .rootCategoryList[index].icon ==
+                                          null
+                                      ? SvgPicture.asset(
+                                          'assets/icons/ic_default.svg',
+                                        )
+                                      : Image.network(
+                                          '$baseUrl${serviceState.rootCategoryList[index].icon}'),
+                                ),
+                                Positioned(
+                                  top: 105,
+                                  bottom: 0,
+                                  right: -5,
+                                  left: -5,
+                                  child: Text(
+                                    serviceState.rootCategoryList[index].name,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline2!
+                                        .copyWith(fontSize: 16),
+                                    textAlign: TextAlign.center,
                                   ),
-                                  // Positioned(
-                                  //   top: 100,
-                                  //   bottom: 0,
-                                  //   right: 0,
-                                  //   left: 0,
-                                  //   child: Text(
-                                  //     serviceState.rootCategoryList[index].name,
-                                  //     style: Theme.of(context)
-                                  //         .textTheme
-                                  //         .headline2!
-                                  //         .copyWith(fontSize: 16),
-                                  //     textAlign: TextAlign.center,
-                                  //   ),
-                                  // ),
-                                ],
-                              ),
+                                ),
+                                // Positioned(
+                                //   top: 100,
+                                //   bottom: 0,
+                                //   right: 0,
+                                //   left: 0,
+                                //   child: Text(
+                                //     serviceState.rootCategoryList[index].name,
+                                //     style: Theme.of(context)
+                                //         .textTheme
+                                //         .headline2!
+                                //         .copyWith(fontSize: 16),
+                                //     textAlign: TextAlign.center,
+                                //   ),
+                                // ),
+                              ],
                             ),
-                          );
-                        },
-                        itemCount: serviceState.rootCategoryList.length,
-                      ),
+                          ),
+                        );
+                      },
+                      itemCount: serviceState.rootCategoryList.length,
                     ),
                   ),
                   const SizedBox(
@@ -220,153 +216,146 @@ class _HomePageState extends State<HomePage>
                       SizedBox(
                         height: 220,
                         width: MediaQuery.of(context).size.width,
-                        child: Observer(
-                          builder: (_) => PageView.builder(
-                              controller: controller,
-                              itemCount: bundleState.bundleList.length,
-                              itemBuilder: (listContext, index) {
-                                return GestureDetector(
-                                  onTap: () => showModalBottomSheet(
-                                    barrierColor: AppColors.bottomSheetBarrier,
-                                    context: context,
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    builder: (context) => AddToCardBottomSheet(
-                                      icon: bundleState.bundleList[index].icon,
-                                      serviceName:
-                                          '${bundleState.bundleList[index].name}  ',
-                                      price:
-                                          bundleState.bundleList[index].price!,
-                                      id: bundleState.bundleList[index].id,
-                                      isBundle: true,
-                                    ),
+                        child: PageView.builder(
+                            controller: controller,
+                            itemCount: bundleState.bundleList.length,
+                            itemBuilder: (listContext, index) {
+                              return GestureDetector(
+                                onTap: () => showModalBottomSheet(
+                                  barrierColor: AppColors.bottomSheetBarrier,
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (context) => AddToCardBottomSheet(
+                                    icon: bundleState.bundleList[index].icon,
+                                    serviceName:
+                                        '${bundleState.bundleList[index].name}  ',
+                                    price: bundleState.bundleList[index].price!,
+                                    id: bundleState.bundleList[index].id,
+                                    isBundle: true,
                                   ),
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(12)),
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 10),
-                                    child: Stack(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                            gradient: const LinearGradient(
-                                              colors: [
-                                                AppColors.purpleDark,
-                                                AppColors.purpleLight,
-                                              ],
-                                              begin: FractionalOffset(1, 1),
-                                              end: FractionalOffset(1, 0),
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          top: 0,
-                                          bottom: 0,
-                                          left: 0,
-                                          right: 0,
-                                          child: Container(
-                                            child: Image.asset(
-                                              'assets/icons/ill_dust.png',
-                                              scale: 2,
-                                              fit: BoxFit.fill,
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          top: 0,
-                                          bottom: 0,
-                                          right: 0,
-                                          left: 0,
-                                          child: SvgPicture.asset(
-                                            'assets/icons/nerves_dust.svg',
-                                            // fit: BoxFit.fitWidth,
-                                          ),
-                                        ),
-                                        Positioned(
-                                            bottom: 0,
-                                            right: -5,
-                                            top: 6,
-                                            child: Image.asset(
-                                              'assets/images/person.png',
-                                              fit: BoxFit.cover,
-                                            )),
-                                        Positioned(
-                                          left: 12,
-                                          top: 12,
-                                          right: 120,
-                                          bottom: 0,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                bundleState
-                                                    .bundleList[index].name,
-                                                style: Styles.semiBoldTextStyle
-                                                    .copyWith(
-                                                        fontSize: 18,
-                                                        color: AppColors.white),
-                                              ),
-                                              Text(
-                                                bundleState.bundleList[index]
-                                                    .description,
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 5,
-                                                style: Styles.mainTextStyle
-                                                    .copyWith(
-                                                        fontSize: 12,
-                                                        color: AppColors.white),
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              const Spacer(),
-                                              RichText(
-                                                  text: TextSpan(children: [
-                                                TextSpan(
-                                                  text: 'price'.tr() + ' ',
-                                                ),
-                                                TextSpan(
-                                                    text:
-                                                        '${formatCurrency.format(bundleState.bundleList[index].price)}  \֏',
-                                                    style: Styles.boldTextStyle
-                                                        .copyWith(
-                                                            color:
-                                                                AppColors.white,
-                                                            fontSize: 14)),
-                                              ])),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
+                                ),
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12)),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          gradient: const LinearGradient(
+                                            colors: [
+                                              AppColors.purpleDark,
+                                              AppColors.purpleLight,
                                             ],
+                                            begin: FractionalOffset(1, 1),
+                                            end: FractionalOffset(1, 0),
                                           ),
-                                        )
-                                      ],
-                                    ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 0,
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        child: Container(
+                                          child: Image.asset(
+                                            'assets/icons/ill_dust.png',
+                                            scale: 2,
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 0,
+                                        bottom: 0,
+                                        right: 0,
+                                        left: 0,
+                                        child: SvgPicture.asset(
+                                          'assets/icons/nerves_dust.svg',
+                                          // fit: BoxFit.fitWidth,
+                                        ),
+                                      ),
+                                      Positioned(
+                                          bottom: 0,
+                                          right: -5,
+                                          top: 6,
+                                          child: Image.asset(
+                                            'assets/images/person.png',
+                                            fit: BoxFit.cover,
+                                          )),
+                                      Positioned(
+                                        left: 12,
+                                        top: 12,
+                                        right: 120,
+                                        bottom: 0,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              bundleState
+                                                  .bundleList[index].name,
+                                              style: Styles.semiBoldTextStyle
+                                                  .copyWith(
+                                                      fontSize: 18,
+                                                      color: AppColors.white),
+                                            ),
+                                            Text(
+                                              bundleState.bundleList[index]
+                                                  .description,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 5,
+                                              style: Styles.mainTextStyle
+                                                  .copyWith(
+                                                      fontSize: 12,
+                                                      color: AppColors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            const Spacer(),
+                                            RichText(
+                                                text: TextSpan(children: [
+                                              TextSpan(
+                                                text: 'price'.tr() + ' ',
+                                              ),
+                                              TextSpan(
+                                                  text:
+                                                      '${formatCurrency.format(bundleState.bundleList[index].price)}  \֏',
+                                                  style: Styles.boldTextStyle
+                                                      .copyWith(
+                                                          color:
+                                                              AppColors.white,
+                                                          fontSize: 14)),
+                                            ])),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                );
-                              }),
-                        ),
+                                ),
+                              );
+                            }),
                       ),
                       const SizedBox(height: 16),
-                      Observer(
-                        builder: (_) => SmoothPageIndicator(
-                          controller: controller,
-                          count: bundleState.bundleList.isNotEmpty
-                              ? bundleState.bundleList.length
-                              : 1,
-                          effect: ExpandingDotsEffect(
-                            dotHeight: 10,
-                            dotWidth: 10,
-                            activeDotColor:
-                                AppColors.purpleDots.withOpacity(.85),
-                            dotColor: AppColors.purpleDots.withOpacity(.25),
-                            expansionFactor: 4,
-                          ),
+                      SmoothPageIndicator(
+                        controller: controller,
+                        count: bundleState.bundleList.isNotEmpty
+                            ? bundleState.bundleList.length
+                            : 1,
+                        effect: ExpandingDotsEffect(
+                          dotHeight: 10,
+                          dotWidth: 10,
+                          activeDotColor: AppColors.purpleDots.withOpacity(.85),
+                          dotColor: AppColors.purpleDots.withOpacity(.25),
+                          expansionFactor: 4,
                         ),
                       ),
                     ],
@@ -393,7 +382,7 @@ class _HomePageState extends State<HomePage>
                   )
                 ],
               ),
-      ),
-    );
+      );
+    });
   }
 }

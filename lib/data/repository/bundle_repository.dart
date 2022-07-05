@@ -37,8 +37,6 @@ class BundleRepository {
     }
   }
 
-
-
   Future<BundleModel> getBundlesById(int id) async {
     try {
       final response = await dio.get(
@@ -64,9 +62,6 @@ class BundleRepository {
     }
   }
 
-
-
-
   Future<List<BundleModel>> search({
     required String searchKeyword,
     required int offset,
@@ -82,7 +77,7 @@ class BundleRepository {
         "term": "$searchKeyword",
       });
 
-     // print('hhhhhhhhhhhhh ${list.length}');
+      // print('hhhhhhhhhhhhh ${list.length}');
       final List bundlesJson = response.data['result'];
       return bundlesJson.map((json) => BundleModel.fromJson(json)).toList();
     } on DioError catch (e) {

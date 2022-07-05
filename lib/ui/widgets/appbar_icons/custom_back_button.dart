@@ -12,17 +12,17 @@ class CustomBackButton extends StatelessWidget {
   const CustomBackButton({
     this.iconColor,
     this.textColor,
-    Key? key, this.callback,
+    Key? key,
+    this.callback,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if(callback!=null)
-          {
-            callback!();
-          }
+        if (callback != null) {
+          callback!();
+        }
         AutoRouter.of(context).pop();
       },
       child: Container(
@@ -36,13 +36,13 @@ class CustomBackButton extends StatelessWidget {
               size: 10,
             ),
             const SizedBox(
-              width: 10,
+              width: 6,
             ),
             Text(
               'keywords.back'.tr(),
               style: Theme.of(context).textTheme.headline4!.copyWith(
                     color: textColor ?? AppColors.black,
-                    fontSize: 15,
+                    fontSize: 13,
                   ),
             ),
           ],

@@ -221,7 +221,6 @@ abstract class _AddPatientState with Store {
     }
   }
 
-
   Future<void> updatePatient() async {
     RequestPatientModel patient = RequestPatientModel(
       firstName: firstName,

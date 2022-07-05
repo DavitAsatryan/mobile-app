@@ -1,4 +1,3 @@
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationApi {
@@ -7,8 +6,11 @@ class NotificationApi {
   static Future _notificationDetails() async {
     return const NotificationDetails(
       android: AndroidNotificationDetails(
-          'cursus', 'High importance notifications',
-          importance: Importance.max),
+        'cursus',
+        'High importance notifications',
+        importance: Importance.max,
+        //playSound: true,
+      ),
       iOS: IOSNotificationDetails(),
     );
   }
@@ -30,4 +32,3 @@ class NotificationApi {
       _notifications.show(id, title, body, await _notificationDetails(),
           payload: payload);
 }
-

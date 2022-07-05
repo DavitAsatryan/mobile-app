@@ -1,4 +1,5 @@
 import 'package:cursus_app/values/values.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class GenderPicker extends StatelessWidget {
@@ -9,7 +10,7 @@ class GenderPicker extends StatelessWidget {
     required this.onChanged,
     Key? key,
   }) : super(key: key);
-
+  static String? genderValue;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,7 +19,7 @@ class GenderPicker extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Gender',
+            'hints.gender'.tr(),
             style: TextStyle(
               fontWeight: FontWeight.w600,
             ),
@@ -30,7 +31,7 @@ class GenderPicker extends StatelessWidget {
             children: [
               Expanded(
                 child: GenderContainer(
-                  value: 'Male',
+                  value: 'hints.male'.tr(),
                   groupValue: selectedGender,
                   onChanged: onChanged,
                 ),
@@ -40,7 +41,7 @@ class GenderPicker extends StatelessWidget {
               ),
               Expanded(
                 child: GenderContainer(
-                  value: 'Female',
+                  value: 'hints.female'.tr(),
                   groupValue: selectedGender,
                   onChanged: onChanged,
                 ),
@@ -77,19 +78,23 @@ class GenderContainer extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(right: 10),
-        child: RadioListTile(
-          onChanged: onChanged,
-          value: value.trim().toLowerCase(),
-          groupValue: groupValue.trim().toLowerCase(),
-          activeColor: AppColors.purpleDark,
-          title: Text(
-            value,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w800,
+        padding: const EdgeInsets.only(right: 5),
+        child: Row(
+          children: [
+            Radio(
+              onChanged: onChanged,
+              value: value.trim().toLowerCase(),
+              groupValue: groupValue.trim().toLowerCase(),
+              activeColor: AppColors.purpleDark,
             ),
-          ),
+            Text(
+              value,
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+          ],
         ),
       ),
     );
